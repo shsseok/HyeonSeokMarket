@@ -1,9 +1,8 @@
 package jpabook.jpashop.domain.item;
 
-import jpabook.jpashop.domain.Category;
 import jpabook.jpashop.domain.CategoryItem;
 import jpabook.jpashop.exception.NotEnounghStockException;
-import jpabook.jpashop.service.UpdateItemDto;
+import jpabook.jpashop.dto.UpdateItemDto;
 import lombok.Getter;
 import lombok.Setter;
 

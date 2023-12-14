@@ -1,13 +1,15 @@
 package jpabook.jpashop.service;
 
-import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.dto.UpdateItemDto;
+import jpabook.jpashop.exception.NoItemException;
 import jpabook.jpashop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -22,13 +24,14 @@ public class ItemService {
     }
 
     /**
-     * 변경감지 이용ㄴ
+     * 변경감지 이용
      * @param updateItemDto
      */
     @Transactional
     public void updateItem(UpdateItemDto updateItemDto)
     {
-        Item findItem = itemRepository.findOne(updateItemDto.getItemId());
+        Item findItem = itemRepository.findById(updateItemDto.getItemId())
+                .orElseThrow(() -> new NoItemException("해당 하는 상품이 없습니다."));
         findItem.changeItem(updateItemDto);
     }
 
@@ -41,7 +44,7 @@ public class ItemService {
 
     public Item findOne(Long itemId)
     {
-        return itemRepository.findOne(itemId);
+        return itemRepository.findById(itemId).orElseThrow(() -> new NoItemException("해당 하는 상품이 없습니다."));
     }
 
 

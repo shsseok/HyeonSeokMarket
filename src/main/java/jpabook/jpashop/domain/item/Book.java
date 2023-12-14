@@ -1,12 +1,11 @@
 package jpabook.jpashop.domain.item;
 
-import jpabook.jpashop.controller.BookForm;
+import jpabook.jpashop.dto.BookForm;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 

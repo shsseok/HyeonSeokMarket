@@ -33,7 +33,7 @@ public class MemberServiceTest {
 
         //then
         em.flush();
-        assertEquals(member,memberRepository.findOne(savedId));
+        assertEquals(member,memberRepository.findById(savedId).get()); //사실은 반환값이 옵셔널 객체라서 이렇게 하면 안됨
     }
     @Test(expected = DuplicateUserException.class)
     public void 중복_회원_예외() throws Exception {
